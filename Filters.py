@@ -91,3 +91,30 @@ class ResizeFilter:
         # Изменяем
         new_image = image.resize((int(new_height), int(new_wight)))
         return new_image
+
+
+class BlackWhiteFilter(Filter):
+    """
+    Фильтр, который делает изображение чёрно-белым.
+    """
+
+    def apply_to_pixel(self, r: int, g: int, b: int) -> tuple[int, int, int]:
+        # преобразуем r
+        if 0 <= r <= 127:
+            new_r = 0
+        else:
+            new_r = 255
+
+        # преобразуем g
+        if 0 <= g <= 127:
+            new_g = 0
+        else:
+            new_g = 255
+
+        # преобразуем b
+        if 0 <= b <= 127:
+            new_b = 0
+        else:
+            new_b = 255
+
+        return new_r, new_g, new_b
